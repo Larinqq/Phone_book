@@ -129,13 +129,15 @@ def print_data_from_page(page_number: int = 1, rows_on_page: int = 3) -> None:
         print("n: Next Page")
 
     user_choice = input(
-        "Enter 'n' for next page, 'p' for previous page, or any other key to quit: ").lower()
+        "Enter 'n' for next page, 'p' for previous page, or q to quit: ").lower()
 
-    while user_choice not in ['n', 'p']:
-        print("Invalid choice. Please enter 'n', 'p', or any other key to quit.")
+    while user_choice not in ['n', 'p', 'q']:
+        print("Invalid choice. Please enter 'n', 'p', or q to quit.")
         user_choice = input(
-            "Enter 'n' for next page, 'p' for previous page, or any other key to quit: ").lower()
+            "Enter 'n' for next page, 'p' for previous page, or q to quit: ").lower()
 
+    if user_choice == 'q':
+        return
     if user_choice == 'n' and page_number < total_pages:
         print_data_from_page(page_number + 1, rows_on_page)
     elif user_choice == 'p' and page_number > 1:
@@ -215,6 +217,17 @@ def write_edited_contact(list_of_row_numbers_to_edit) -> None:
     Args:
         list_of_row_numbers_to_edit (_type_): a row's number for editing
     """
+    if len(list_of_row_numbers_to_edit) == 0:
+        print('Nothing to edit.Please choose one parametr')
+        input('Press enter to continue')
+        clear_console()
+        write_edited_contact(search())
+    elif len(list_of_row_numbers_to_edit) > 1:
+        print('To much contatcs to edit, please select only one one')
+        input('Press enter to continue')
+        clear_console()
+        write_edited_contact(search())
+
     editing_parameters = get_search_and_edit_param('editing')
 
     with open(DATA_FILE_NAME, 'r') as phone_book_data:
@@ -235,4 +248,5 @@ def write_edited_contact(list_of_row_numbers_to_edit) -> None:
         file_writer = csv.writer(phone_book_data)
         file_writer.writerows(rows)
 
+    clear_console()
     print("\n Contact was edited successfully!")

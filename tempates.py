@@ -18,10 +18,11 @@ def print_main_menu():
     """
     print('\nWelcome to the Phone book')
     print('Choose what would you like to do:\n')
-    print('View phone book - 1')
-    print('Search for a contact - 2')
-    print('Add new contact - 3')
-    print('Seach and Edit contact - 4\n')
+    print('1 - View phone book')
+    print('2 - Search for a contact')
+    print('3 - Add new contact')
+    print('4 - Seach and Edit contact\n')
+    print('"q" for quit \n')
 
 
 def print_search_and_edit_menu(text):
@@ -32,10 +33,10 @@ def print_search_and_edit_menu(text):
     """
     print('=========================\n')
     print(f'Choose one or few parametres for {text}(one by one)\n')
-    print(f'Last name -  0 ')
-    print(f'First name - 1 ')
-    print(f'Middle name - 2 ')
-    print(f'Company - 3 ')
-    print(f'Work phone - 4')
-    print(f'Private phone - 5 \n')
+    print(f'0 - Last name ')
+    print(f'1 - First name ')
+    print(f'2 - Middle name ')
+    print(f'3 - Company ')
+    print(f'4 - Work phone')
+    print(f'5 - Private phone \n')
     print('=========================\n')
